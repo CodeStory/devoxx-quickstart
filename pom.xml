@@ -91,6 +91,18 @@
         </configuration>
       </plugin>
       <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.2.1</version>
@@ -99,11 +111,22 @@
             <goals>
               <goal>java</goal>
             </goals>
+            <configuration>
+              <mainClass>${main.class}</mainClass>
+            </configuration>
           </execution>
+          <!--<execution>-->
+          <!--<id>before-e2e</id>-->
+          <!--<phase>pre-integration-test</phase>-->
+          <!--<goals>-->
+          <!--<goal>exec</goal>-->
+          <!--</goals>-->
+          <!--<configuration>-->
+          <!--<executable>java</executable>-->
+          <!--<commandlineArgs>-jar target/server.jar</commandlineArgs>-->
+          <!--</configuration>-->
+          <!--</execution>-->
         </executions>
-        <configuration>
-          <mainClass>${main.class}</mainClass>
-        </configuration>
       </plugin>
 
       <plugin>
