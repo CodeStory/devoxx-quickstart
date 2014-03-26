@@ -114,6 +114,15 @@
           <gruntExecutable>${basedir}/node_modules/grunt-cli/bin/grunt</gruntExecutable>
           <runGruntWithNode>true</runGruntWithNode>
         </configuration>
+        <executions>
+          <execution>
+            <id>e2e</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>grunt</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
