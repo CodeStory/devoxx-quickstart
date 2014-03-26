@@ -1,0 +1,18 @@
+---
+layout: default
+title: Hello World
+ng-app: devoxx
+style: style.less
+---
+<div>
+  <h1>Hello World!</h1>
+
+  <h2>Welcome to CodeStory http stack.</h2>
+
+  <ul ng-cloak ng-controller="DeveloperController as dev">
+    <li ng-repeat="developer in dev.developers">{{developer.prenom}}</li>
+  </ul>
+
+  <script src="angular.min.js"  ></script>
+  <script src="controller.coffee"></script>
+</div>
