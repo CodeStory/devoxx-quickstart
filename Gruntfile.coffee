@@ -13,4 +13,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-protractor-runner'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.registerTask 'test', ['protractor']
-  grunt.registerTask 'default', ['test', 'watch']
+  grunt.registerTask 'watch', ['test', 'watch']
+  grunt.registerTask 'default', ['test']
