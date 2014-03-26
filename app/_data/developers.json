@@ -1,0 +1,22 @@
+[
+  {
+    "prenom": "David",
+    "job": "Développeur Java/Web",
+    "ville": "Paris, France",
+    "description1": "Bonjour, je suis développeur indépendant. Ma passion ? L'écriture de logiciels pointus mais simples. J'ai pour leitmotiv d'être un facilitateur qui, par ma créativité et mon expertise, aide les équipes à être plus innovantes et plus efficaces.",
+    "description2": "Je participe à des projets depuis 1998, comme responsable R&D chez l'éditeur Adesoft puis, comme expert Java et Scrum chez Valtech, CTO chez Algodeal, un fond d'investissement quantitatif puis développeur chez SonarSource, la société derrière Sonar.",
+    "tags": ["Java", "Web", "Javascript", "Agile"],
+    "photo": "david",
+    "price": 1000
+  },
+  {
+    "prenom": "Mathilde",
+    "job": "Ingénieur Mobile / Java",
+    "ville": "Paris, France",
+    "description1": "Freelance depuis plus de 3 ans, j'interviens sur des projets en tant que développeur / lead technique / scrum master.",
+    "description2": "Je propose également des formations sur les tests (unitaire, intégration, systeme ...) et leurs mises en place dans un contexte d'intégration continue.",
+    "tags": ["Java", "Jee", "Spring", "Hibernate", "Jsp"],
+    "photo": "mathilde",
+    "price": 700
+  }
+]

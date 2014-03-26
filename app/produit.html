@@ -2,7 +2,6 @@
 layout: default
 title: Page produit
 style: style.less
-ville: Paris, France
 ---
 
 <nav class="navbar navbar-inverse">
@@ -12,95 +11,46 @@ ville: Paris, France
 </nav>
 
 <div class="container-fluid">
+  [[#each site.data.developers]]
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
         <div class="col-xs-7">
           <div class="profil">
-            <h1>David</h1>
+            <h1>[[prenom]]</h1>
 
             <blockquote>
-              <p>Développeur Java/Web</p>
+              <p>[[job]]</p>
 
-              [[> map ]]
+              <p>[[ville]]</p>
 
               <p class="small text-justify">
-                Bonjour, je suis développeur indépendant. Ma passion ? L'écriture de logiciels pointus mais simples.
-                J'ai
-                pour leitmotiv d'être un facilitateur qui, par ma créativité et mon expertise, aide les équipes à être
-                plus innovantes et plus efficaces.
+                [[description1]]
               </p>
 
               <p class="small text-justify">
-                Je participe à des projets depuis 1998, comme responsable R&D chez l'éditeur Adesoft puis, comme expert
-                Java et Scrum chez Valtech, CTO chez Algodeal, un fond d'investissement quantitatif puis développeur
-                chez SonarSource, la société derrière Sonar.
+                [[description2]]
               </p>
 
               <div>
-                <span class="label label-danger">Java</span>
-                <span class="label label-danger">Web</span>
-                <span class="label label-danger">Javascript</span>
-                <span class="label label-danger">Agile</span>
+                [[#each tags]]
+                <span class="label label-danger">[[.]]</span>
+                [[/each]]
               </div>
             </blockquote>
           </div>
 
         </div>
         <div class="col-xs-5 text-center">
-          <img class="thumbnail img-responsive" src="images/david.png">
+          <img class="thumbnail img-responsive" src="images/[[photo]].png">
 
-          <h3>Tarif : 1000€/ Jour</h3>
+          <h3>Tarif : [[price]]€/ Jour</h3>
           <a class="btn-lg btn btn-success" href="">Chasser !</a>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-7">
-          <div class="profil">
-            <h1>Mathilde</h1>
-
-            <blockquote>
-              <p>Ingénieur Mobile / Java</p>
-
-              [[> map ]]
-
-              <p class="small text-justify">
-                Freelance depuis plus de 3 ans, j'interviens sur des projets en tant que développeur / lead technique /
-                scrum master.
-              </p>
-
-              <p class="small text-justify">
-                Je propose également des formations sur les tests (unitaire, intégration, systeme ...) et leurs mises en
-                place dans un contexte d'intégration continue.
-              </p>
-
-              <div>
-                <span class="label label-danger">Java</span>
-                <span class="label label-danger">Jee</span>
-                <span class="label label-danger">Spring</span>
-                <span class="label label-danger">Hibernate</span>
-                <span class="label label-danger">Jsp</span>
-              </div>
-            </blockquote>
-          </div>
-
-        </div>
-        <div class="col-xs-5 text-center">
-          <img class="thumbnail img-responsive" src="images/mathilde.png">
-
-          <h3>Tarif : 700€/ Jour</h3>
-          <a class="btn-lg btn btn-success" href="">Chasser !</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+  [[/each]]
 </div>
 
 
