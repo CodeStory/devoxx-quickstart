@@ -10,7 +10,7 @@ exports.config = {
 
   baseUrl: 'http://localhost:8080',
 
-  onPrepare: function() {
+  onPrepare: function () {
     global.By = global.by;
   }
 };

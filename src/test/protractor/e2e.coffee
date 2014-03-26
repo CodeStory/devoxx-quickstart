@@ -1,7 +1,7 @@
-describe 'E2E: Acceptance Testing', () ->
+describe 'E2E: Acceptance Testing', ->
+  beforeEach ->
+    browser.get '/'
 
-  beforeEach () -> browser.get '/'
-
-  it 'should have a working welcome page', () ->
+  it 'should have a working welcome page', ->
     expect($('h1').getText()).toEqual 'Hello World!'
     expect(element.all(By.css('li')).count()).toBe 2
