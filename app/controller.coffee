@@ -1,5 +1,30 @@
 devoxx = angular.module 'devoxx', []
 
-.controller 'DeveloperController', class
-    constructor: ->
-      console.log 'DeveloperController'
+.controller 'BasketController', class
+    constructor: (@$http)->
+      @emails = JSON.parse(localStorage['emails'] || '[]')
+      @basket = {}
+      @refresh()
+
+    add: (email) ->
+      @emails.push email unless email in @emails
+      localStorage['emails'] = JSON.stringify(@emails)
+      @refresh()
+
+    remove: (email) ->
+      @emails = (mail for mail in @emails when mail isnt email)
+      localStorage['emails'] = JSON.stringify(@emails)
+      @refresh()
+
+    refresh: ->
+      @$http.get("/basket?emails=#{@emails}").success (data) =>
+        @basket = data
+
+    range: (count) ->
+      [0...count]
+
+    starColor: (count) ->
+      if count < 0 then 'red' else 'green'
+
+    showRemove: (email) ->
+      email in @emails

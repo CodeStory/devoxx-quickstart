@@ -17,6 +17,8 @@
 + [ ] Fongo / Mongo
 + [ ] Css
 + [ ] Coder le panier
++ [ ] LogFilterRequest uri + params
++ [ ] http://localhost:8080/basket?emails=david@gageot.net&emails=mathilde@lemee.net
 
 # Divers
 
@@ -29,7 +31,8 @@
 + [ ] Créer un projet vide déjà chargé dans Intellij
 + [ ] slide handlebar (if, for, ...)
 + [ ] Categories de mots clefs
-
++ [ ] Transition de server-side templating vers client side templating pour le filtre sur les tags de la homepage
++ [ ]
 
 
 # 0/ Install

@@ -1,5 +1,6 @@
 [
   {
+    "email": "david@gageot.net",
     "prenom": "David",
     "job": "Développeur Java/Web",
     "ville": "Paris, France",
@@ -10,6 +11,7 @@
     "price": 1000
   },
   {
+    "email": "mathilde@lemee.net",
     "prenom": "Mathilde",
     "job": "Ingénieur Mobile / Java",
     "ville": "Paris, France",

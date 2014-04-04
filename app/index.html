@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Page produit
-style: style.less
+styles: ['/webjars/bootstrap/3.1.1/css/bootstrap.css', 'style.less']
+ng-app: devoxx
 ---
 
 <nav class="navbar navbar-inverse">
@@ -10,7 +11,25 @@ style: style.less
   </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="BasketController as basket" ng-cloak>
+  <div id="basket" ng-if="basket">
+    <ul>
+      <li><strong>Test:</strong> <span class="test glyphicon glyphicon-star"
+                                       ng-repeat="i in basket.range(basket.basket.test)"></span>
+      </li>
+      <li><strong>Back:</strong> <span class="back glyphicon glyphicon-star"
+                                       ng-repeat="i in basket.range(basket.basket.back)"></span>
+      <li><strong>Database:</strong> <span class="database glyphicon glyphicon-star"
+                                           ng-repeat="i in basket.range(basket.basket.database)"></span>
+      <li><strong>Front:</strong> <span class="front glyphicon glyphicon-star"
+                                        ng-repeat="i in basket.range(basket.basket.front)"></span>
+      <li><strong>Hipster:</strong> <span ng-class="basket.starColor(basket.basket.hipster)"
+                                          class="glyphicon glyphicon-star"
+                                          ng-repeat="i in basket.range(basket.basket.hipster)"></span>
+      <li><strong>Total price:</strong> {{basket.basket.sum}}</li>
+    </ul>
+  </div>
+
   [[#each site.data.developers]]
   <div class="panel panel-default">
     <div class="panel-body">
@@ -45,7 +64,10 @@ style: style.less
           <img class="thumbnail img-responsive" src="images/[[photo]].png">
 
           <h3>Tarif : [[price]]€/ Jour</h3>
-          <a class="btn-lg btn btn-success" href="">Chasser !</a>
+          <a ng-hide="basket.showRemove('[[email]]')" class="btn-lg btn btn-success" href=""
+             ng-click="basket.add('[[email]]')">Chasser !</a>
+          <a ng-show="basket.showRemove('[[email]]')" class="btn-lg btn btn-danger" href=""
+             ng-click="basket.remove('[[email]]')">Virer !</a>
         </div>
       </div>
     </div>
@@ -53,4 +75,6 @@ style: style.less
   [[/each]]
 </div>
 
+<script src="/webjars/angularjs/1.2.14/angular.min.js"></script>
+<script src="controller.coffee"></script>
 
