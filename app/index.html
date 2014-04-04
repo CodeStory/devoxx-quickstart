@@ -8,7 +8,7 @@ ng-app: devoxx
 <div ng-controller="BasketController as basket" ng-cloak>
   <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Chasseur de dev.io</a>
+      <a class="navbar-brand" href="#">Chasseur de d€v.io</a>
     </div>
 
     <div class="navbar-right">
@@ -33,8 +33,8 @@ ng-app: devoxx
                   ng-repeat="i in basket.maxRange()"></span>
           <li>
             <strong>Hipster</strong>
-            <span ng-class="basket.starColor(basket.basket.hipster)" class="glyphicon glyphicon-stop"
-                  ng-repeat="i in basket.range(basket.basket.hipster)"></span>
+            <span class="hipster glyphicon glyphicon-stop" ng-show="i <= basket.basket.hipster"
+                  ng-repeat="i in basket.maxRange()"></span>
           <li>
             <hr/>
           </li>
@@ -81,7 +81,7 @@ ng-app: devoxx
           <div class="col-xs-5 text-center">
             <img class="thumbnail img-responsive" src="images/[[photo]].png">
 
-            <h3>Tarif [[price]]€ / jour</h3>
+            <h3>[[price]]€ / jour</h3>
             <a ng-hide="basket.showRemove('[[email]]')" class="btn-lg btn btn-success" href=""
                ng-click="basket.add('[[email]]')">Chasser !</a>
             <a ng-show="basket.showRemove('[[email]]')" class="btn-lg btn btn-danger" href=""

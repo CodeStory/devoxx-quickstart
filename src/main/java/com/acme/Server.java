@@ -55,9 +55,7 @@ public class Server {
   }
 
   static long hipster(String[] tags) {
-    long bonus = of(tags).filter(tag -> tag.equals("Javascript") || tag.equals("Web") || tag.equals("Java")).count();
-    long malus = of(tags).filter(tag -> !(tag.equals("Javascript") || tag.equals("Web") || tag.equals("Java"))).count();
-    return bonus - malus;
+    return of(tags).filter(tag -> tag.equals("Javascript") || tag.equals("Web")).count();
   }
 
   static class Developer {
