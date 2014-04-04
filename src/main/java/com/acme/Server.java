@@ -12,11 +12,9 @@ public class Server {
   public static void main(String[] args) {
     new WebServer(routes -> routes
         .get("/basket?emails=:emails", (context, emails) -> {
-          String[] listEmails = emails.split("[,]");
-
           Basket basket = new Basket();
 
-          for (String email : listEmails) {
+          for (String email : emails.split("[,]")) {
             Optional<Developer> developer = findDeveloper(email);
             if (developer.isPresent()) {
               String[] tags = developer.get().tags;
