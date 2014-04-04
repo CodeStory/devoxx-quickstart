@@ -1,18 +1,56 @@
 ---
 layout: default
-title: Hello World
-ng-app: devoxx
+title: Page produit
 style: style.less
 ---
-<div>
-  <h1>Hello World!</h1>
 
-  <h2>Welcome to CodeStory http stack.</h2>
+<nav class="navbar navbar-inverse">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Chasseur-de-dev.io</a>
+  </div>
+</nav>
 
-  <ul ng-cloak ng-controller="DeveloperController as dev">
-    <li ng-repeat="developer in dev.developers">{{developer.prenom}}</li>
-  </ul>
+<div class="container-fluid">
+  [[#each site.data.developers]]
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="profil">
+            <h1>[[prenom]]</h1>
 
-  <script src="angular.min.js"></script>
-  <script src="controller.coffee"></script>
+            <blockquote>
+              <p>[[job]]</p>
+
+              <p>[[ville]]</p>
+
+              <p class="small text-justify">
+                [[description1]]
+              </p>
+
+              <p class="small text-justify">
+                [[description2]]
+              </p>
+
+              <div>
+                [[#each tags]]
+                <span class="label label-danger">[[.]]</span>
+                [[/each]]
+              </div>
+            </blockquote>
+          </div>
+
+        </div>
+        <div class="col-xs-5 text-center">
+          <img class="thumbnail img-responsive" src="images/[[photo]].png">
+
+          <h3>Tarif : [[price]]€/ Jour</h3>
+          <a class="btn-lg btn btn-success" href="">Chasser !</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  [[/each]]
 </div>
+
+

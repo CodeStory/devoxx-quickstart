@@ -13,11 +13,28 @@
 + [ ] repo maven
 + [ ] Test JS
 + [ ] Restassured
-+ [ ] Preparer des data
++ [ ] Extraire 10+ profils de Hopwork
 + [ ] Fongo / Mongo
++ [ ] Css
++ [ ] Coder le panier
 
 # Divers
 
 + [ ] Annonce formation! Date et pitch
 + [ ] Clefs USB
 + [ ] Goodies
++ [ ] Imprimer le déroulé
++ [ ]
++ [ ] bouquins Java EE (Antonio) (dedicace)
++ [ ] Créer un projet vide déjà chargé dans Intellij
++ [ ] slide handlebar (if, for, ...)
++ [ ] Categories de mots clefs
+
+
+
+# 0/ Install
+# 1/ Liste des développeurs (Atelier) (server side)
+# 2/ Mise en panier (Atelier) (angular)
+# 3/ 4 Tests (UT, IT, VIEW, E2E) (Atelier)
+
+# Database (demo)
