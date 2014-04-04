@@ -20,5 +20,16 @@
     "tags": ["Java", "Jee", "Spring", "Hibernate", "Jsp"],
     "photo": "mathilde",
     "price": 700
+  },
+  {
+    "email": "jeanlaurent@morlhon.net",
+    "prenom": "Jean-Laurent",
+    "job": "Blogger du dimanche",
+    "ville": "Houilles, France",
+    "description1": "Freelance depuis plus de 1 an.",
+    "description2": "",
+    "tags": ["Java", "Test", "CoffeeScript", "Node", "Javascript"],
+    "photo": "jl",
+    "price": 1000
   }
 ]

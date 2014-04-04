@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Page produit
+title: Chasseur de dev
 styles: ['/webjars/bootstrap/3.1.1/css/bootstrap.css', 'style.less']
 ng-app: devoxx
 ---
@@ -26,6 +26,7 @@ ng-app: devoxx
           <li><strong>Hipster</strong> <span ng-class="basket.starColor(basket.basket.hipster)"
                                              class="glyphicon glyphicon-stop"
                                              ng-repeat="i in basket.range(basket.basket.hipster)"></span>
+            <hr/>
           <li><strong>Total price</strong> {{basket.basket.sum}}€</li>
         </ul>
       </div>

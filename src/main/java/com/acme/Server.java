@@ -49,6 +49,9 @@ public class Server {
       if (tag.equals("Jsp")) {
         score++;
       }
+      if (tag.equals("CoffeeScript")) {
+        score++;
+      }
     }
     return score;
   }
@@ -63,6 +66,9 @@ public class Server {
         score++;
       }
       if (tag.equals("Hibernate")) {
+        score++;
+      }
+      if (tag.equals("Node")) {
         score++;
       }
     }
