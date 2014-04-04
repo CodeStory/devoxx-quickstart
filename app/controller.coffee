@@ -22,6 +22,9 @@ devoxx = angular.module 'devoxx', []
     range: (count) ->
       [0...count]
 
+    maxRange: ->
+      [1..5]
+
     starColor: (count) ->
       if count < 0 then 'red' else 'green'
 

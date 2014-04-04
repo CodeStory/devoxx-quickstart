@@ -16,18 +16,21 @@ ng-app: devoxx
         <ul>
           <li>
             <strong>Test</strong>
-            <span class="test glyphicon glyphicon-stop" ng-repeat="i in basket.range(basket.basket.test)"></span>
+            <span class="test glyphicon glyphicon-stop" ng-show="i <= basket.basket.test"
+                  ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             <strong>Back</strong>
-            <span class="back glyphicon glyphicon-stop" ng-repeat="i in basket.range(basket.basket.back)"></span>
+            <span class="back glyphicon glyphicon-stop" ng-show="i <= basket.basket.back"
+                  ng-repeat="i in basket.maxRange()"></span>
           <li>
             <strong>Database</strong>
-            <span class="database glyphicon glyphicon-stop"
-                  ng-repeat="i in basket.range(basket.basket.database)"></span>
+            <span class="database glyphicon glyphicon-stop" ng-show="i <= basket.basket.database"
+                  ng-repeat="i in basket.maxRange()"></span>
           <li>
             <strong>Front</strong>
-            <span class="front glyphicon glyphicon-stop" ng-repeat="i in basket.range(basket.basket.front)"></span>
+            <span class="front glyphicon glyphicon-stop" ng-show="i <= basket.basket.front"
+                  ng-repeat="i in basket.maxRange()"></span>
           <li>
             <strong>Hipster</strong>
             <span ng-class="basket.starColor(basket.basket.hipster)" class="glyphicon glyphicon-stop"
