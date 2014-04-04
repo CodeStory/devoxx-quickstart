@@ -1,33 +1,44 @@
 ---
 layout: default
-title: Chasseur de dev
-styles: ['/webjars/bootstrap/3.1.1/css/bootstrap.css', 'style.less']
+title: Chasseur de dev.io
+styles: [/webjars/bootstrap/3.1.1/css/bootstrap.css, style.less]
 ng-app: devoxx
 ---
 
 <div ng-controller="BasketController as basket" ng-cloak>
   <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Chasseur-de-dev.io</a>
+      <a class="navbar-brand" href="#">Chasseur de dev.io</a>
     </div>
 
     <div class="navbar-right">
       <div id="basket" ng-if="basket.basket.sum > 0">
         <ul>
-          <li><strong>Test</strong> <span class="test glyphicon glyphicon-stop"
-                                          ng-repeat="i in basket.range(basket.basket.test)"></span>
+          <li>
+            <strong>Test</strong>
+            <span class="test glyphicon glyphicon-stop" ng-repeat="i in basket.range(basket.basket.test)"></span>
           </li>
-          <li><strong>Back</strong> <span class="back glyphicon glyphicon-stop"
-                                          ng-repeat="i in basket.range(basket.basket.back)"></span>
-          <li><strong>Database</strong> <span class="database glyphicon glyphicon-stop"
-                                              ng-repeat="i in basket.range(basket.basket.database)"></span>
-          <li><strong>Front</strong> <span class="front glyphicon glyphicon-stop"
-                                           ng-repeat="i in basket.range(basket.basket.front)"></span>
-          <li><strong>Hipster</strong> <span ng-class="basket.starColor(basket.basket.hipster)"
-                                             class="glyphicon glyphicon-stop"
-                                             ng-repeat="i in basket.range(basket.basket.hipster)"></span>
+          <li>
+            <strong>Back</strong>
+            <span class="back glyphicon glyphicon-stop" ng-repeat="i in basket.range(basket.basket.back)"></span>
+          <li>
+            <strong>Database</strong>
+            <span class="database glyphicon glyphicon-stop"
+                  ng-repeat="i in basket.range(basket.basket.database)"></span>
+          <li>
+            <strong>Front</strong>
+            <span class="front glyphicon glyphicon-stop" ng-repeat="i in basket.range(basket.basket.front)"></span>
+          <li>
+            <strong>Hipster</strong>
+            <span ng-class="basket.starColor(basket.basket.hipster)" class="glyphicon glyphicon-stop"
+                  ng-repeat="i in basket.range(basket.basket.hipster)"></span>
+          <li>
             <hr/>
-          <li><strong>Total price</strong> {{basket.basket.sum}}€</li>
+          </li>
+          <li>
+            <strong>Total price</strong>
+            {{basket.basket.sum}}€
+          </li>
         </ul>
       </div>
     </div>

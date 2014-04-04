@@ -1,7 +1,11 @@
 package com.acme;
 
+import static java.util.stream.Stream.*;
+import static net.codestory.http.convert.TypeConvert.*;
+
+import java.util.*;
+
 import net.codestory.http.*;
-import net.codestory.http.convert.*;
 import net.codestory.http.templating.*;
 
 public class Server {
@@ -13,14 +17,16 @@ public class Server {
           Basket basket = new Basket();
 
           for (String email : listEmails) {
-            Developer developer = findDeveloper(email);
-            if (developer != null) {
-              basket.front += front(developer.tags);
-              basket.back += back(developer.tags);
-              basket.database += database(developer.tags);
-              basket.test += test(developer.tags);
-              basket.hipster += hipster(developer.tags);
-              basket.sum += developer.price;
+            Optional<Developer> developer = findDeveloper(email);
+            if (developer.isPresent()) {
+              String[] tags = developer.get().tags;
+
+              basket.front += front(tags);
+              basket.back += back(tags);
+              basket.database += database(tags);
+              basket.test += test(tags);
+              basket.hipster += hipster(tags);
+              basket.sum += developer.get().price;
             }
           }
 
@@ -29,96 +35,45 @@ public class Server {
     ).start();
   }
 
-  private static Developer findDeveloper(String email) {
-    Developer[] developers = TypeConvert.convertValue(Site.get().getData().get("developers"), Developer[].class);
-    for (Developer developer : developers) {
-      if (developer.email.equals(email)) {
-        return developer;
-      }
-    }
-
-    return null;
+  static Optional<Developer> findDeveloper(String email) {
+    Developer[] developers = convertValue(Site.get().getData().get("developers"), Developer[].class);
+    return of(developers).filter(developer -> developer.email.equals(email)).findFirst();
   }
 
-  private static int front(String[] tags) {
-    int score = 0;
-    for (String tag : tags) {
-      if (tag.equals("Javascript")) {
-        score++;
-      }
-      if (tag.equals("Jsp")) {
-        score++;
-      }
-      if (tag.equals("CoffeeScript")) {
-        score++;
-      }
-    }
-    return score;
+  static long front(String[] tags) {
+    return of(tags).filter(tag -> tag.equals("Javascript") || tag.equals("Jsp") || tag.equals("CoffeeScript")).count();
   }
 
-  private static int back(String[] tags) {
-    int score = 0;
-    for (String tag : tags) {
-      if (tag.equals("Java")) {
-        score++;
-      }
-      if (tag.equals("Spring")) {
-        score++;
-      }
-      if (tag.equals("Hibernate")) {
-        score++;
-      }
-      if (tag.equals("Node")) {
-        score++;
-      }
-    }
-    return score;
+  static long back(String[] tags) {
+    return of(tags).filter(tag -> tag.equals("Java") || tag.equals("Spring") || tag.equals("Hibernate") || tag.equals("Node")).count();
   }
 
-  private static int database(String[] tags) {
-    int score = 0;
-    for (String tag : tags) {
-      if (tag.equals("Javascript")) {
-        score++;
-      }
-    }
-    return score;
+  static long database(String[] tags) {
+    return of(tags).filter(tag -> tag.equals("Hibernate")).count();
   }
 
-  private static int test(String[] tags) {
-    int score = 0;
-    for (String tag : tags) {
-      if (tag.equals("Javascript")) {
-        score++;
-      }
-    }
-    return score;
+  static long test(String[] tags) {
+    return of(tags).filter(tag -> tag.equals("Java") || tag.equals("Javascript")).count();
   }
 
-  private static int hipster(String[] tags) {
-    int score = 0;
-    for (String tag : tags) {
-      if (tag.equals("Javascript") || tag.equals("Web") || tag.equals("Java")) {
-        score++;
-      } else {
-        score--;
-      }
-    }
-    return score;
+  static long hipster(String[] tags) {
+    long bonus = of(tags).filter(tag -> tag.equals("Javascript") || tag.equals("Web") || tag.equals("Java")).count();
+    long malus = of(tags).filter(tag -> !(tag.equals("Javascript") || tag.equals("Web") || tag.equals("Java"))).count();
+    return bonus - malus;
   }
 
-  public static class Developer {
+  static class Developer {
     String email;
     String[] tags;
     int price;
   }
 
-  public static class Basket {
-    int sum;
-    int front;
-    int back;
-    int database;
-    int test;
-    int hipster;
+  static class Basket {
+    long sum;
+    long front;
+    long back;
+    long database;
+    long test;
+    long hipster;
   }
 }

@@ -8,15 +8,14 @@ devoxx = angular.module 'devoxx', []
 
     add: (email) ->
       @emails.push email unless email in @emails
-      localStorage['emails'] = JSON.stringify(@emails)
       @refresh()
 
     remove: (email) ->
       @emails = (mail for mail in @emails when mail isnt email)
-      localStorage['emails'] = JSON.stringify(@emails)
       @refresh()
 
     refresh: ->
+      localStorage['emails'] = JSON.stringify(@emails)
       @$http.get("/basket?emails=#{@emails}").success (data) =>
         @basket = data
 
