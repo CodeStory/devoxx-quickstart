@@ -92,7 +92,7 @@ public class Server {
   private static int hipster(String[] tags) {
     int score = 0;
     for (String tag : tags) {
-      if (tag.equals("Javascript")) {
+      if (tag.equals("Javascript") || tag.equals("Web") || tag.equals("Java")) {
         score++;
       } else {
         score--;

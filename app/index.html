@@ -5,74 +5,78 @@ styles: ['/webjars/bootstrap/3.1.1/css/bootstrap.css', 'style.less']
 ng-app: devoxx
 ---
 
-<nav class="navbar navbar-inverse">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">Chasseur-de-dev.io</a>
-  </div>
-</nav>
+<div ng-controller="BasketController as basket" ng-cloak>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Chasseur-de-dev.io</a>
+    </div>
 
-<div class="container-fluid" ng-controller="BasketController as basket" ng-cloak>
-  <div id="basket" ng-if="basket">
-    <ul>
-      <li><strong>Test:</strong> <span class="test glyphicon glyphicon-star"
-                                       ng-repeat="i in basket.range(basket.basket.test)"></span>
-      </li>
-      <li><strong>Back:</strong> <span class="back glyphicon glyphicon-star"
-                                       ng-repeat="i in basket.range(basket.basket.back)"></span>
-      <li><strong>Database:</strong> <span class="database glyphicon glyphicon-star"
-                                           ng-repeat="i in basket.range(basket.basket.database)"></span>
-      <li><strong>Front:</strong> <span class="front glyphicon glyphicon-star"
-                                        ng-repeat="i in basket.range(basket.basket.front)"></span>
-      <li><strong>Hipster:</strong> <span ng-class="basket.starColor(basket.basket.hipster)"
-                                          class="glyphicon glyphicon-star"
-                                          ng-repeat="i in basket.range(basket.basket.hipster)"></span>
-      <li><strong>Total price:</strong> {{basket.basket.sum}}</li>
-    </ul>
-  </div>
+    <div class="navbar-right">
+      <div id="basket" ng-if="basket.basket.sum > 0">
+        <ul>
+          <li><strong>Test</strong> <span class="test glyphicon glyphicon-stop"
+                                          ng-repeat="i in basket.range(basket.basket.test)"></span>
+          </li>
+          <li><strong>Back</strong> <span class="back glyphicon glyphicon-stop"
+                                          ng-repeat="i in basket.range(basket.basket.back)"></span>
+          <li><strong>Database</strong> <span class="database glyphicon glyphicon-stop"
+                                              ng-repeat="i in basket.range(basket.basket.database)"></span>
+          <li><strong>Front</strong> <span class="front glyphicon glyphicon-stop"
+                                           ng-repeat="i in basket.range(basket.basket.front)"></span>
+          <li><strong>Hipster</strong> <span ng-class="basket.starColor(basket.basket.hipster)"
+                                             class="glyphicon glyphicon-stop"
+                                             ng-repeat="i in basket.range(basket.basket.hipster)"></span>
+          <li><strong>Total price</strong> {{basket.basket.sum}}€</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  [[#each site.data.developers]]
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-7">
-          <div class="profil">
-            <h1>[[prenom]]</h1>
+  <div class="container-fluid">
+    [[#each site.data.developers]]
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-7">
+            <div class="profil">
+              <h1>[[prenom]]</h1>
 
-            <blockquote>
-              <p>[[job]]</p>
+              <blockquote>
+                <p>[[job]]</p>
 
-              <p>[[ville]]</p>
+                <p>[[ville]]</p>
 
-              <p class="small text-justify">
-                [[description1]]
-              </p>
+                <p class="small text-justify">
+                  [[description1]]
+                </p>
 
-              <p class="small text-justify">
-                [[description2]]
-              </p>
+                <p class="small text-justify">
+                  [[description2]]
+                </p>
 
-              <div>
-                [[#each tags]]
-                <span class="label label-danger">[[.]]</span>
-                [[/each]]
-              </div>
-            </blockquote>
+                <div>
+                  [[#each tags]]
+                  <span class="label label-danger">[[.]]</span>
+                  [[/each]]
+                </div>
+              </blockquote>
+            </div>
+
           </div>
+          <div class="col-xs-5 text-center">
+            <img class="thumbnail img-responsive" src="images/[[photo]].png">
 
-        </div>
-        <div class="col-xs-5 text-center">
-          <img class="thumbnail img-responsive" src="images/[[photo]].png">
-
-          <h3>Tarif : [[price]]€/ Jour</h3>
-          <a ng-hide="basket.showRemove('[[email]]')" class="btn-lg btn btn-success" href=""
-             ng-click="basket.add('[[email]]')">Chasser !</a>
-          <a ng-show="basket.showRemove('[[email]]')" class="btn-lg btn btn-danger" href=""
-             ng-click="basket.remove('[[email]]')">Virer !</a>
+            <h3>Tarif [[price]]€/ Jour</h3>
+            <a ng-hide="basket.showRemove('[[email]]')" class="btn-lg btn btn-success" href=""
+               ng-click="basket.add('[[email]]')">Chasser !</a>
+            <a ng-show="basket.showRemove('[[email]]')" class="btn-lg btn btn-danger" href=""
+               ng-click="basket.remove('[[email]]')">Virer !</a>
+          </div>
         </div>
       </div>
     </div>
+    [[/each]]
   </div>
-  [[/each]]
 </div>
 
 <script src="/webjars/angularjs/1.2.14/angular.min.js"></script>
