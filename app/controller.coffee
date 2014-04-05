@@ -1,4 +1,4 @@
-devoxx = angular.module 'devoxx', []
+devoxx = angular.module 'devoxx', ['ngAnimate']
 
 .controller 'BasketController', class
     constructor: (@$http)->

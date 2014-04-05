@@ -19,35 +19,35 @@ ng-app: devoxx
             <span class="front box"
                   ng-class="'box-' + i"
                   ng-show="i <= basket.basket.front"
-                  ng-repeat="i in basket.maxRange()">{{i}}</span>
+                  ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             Back
             <span class="back box"
                   ng-class="'box-' + i"
                   ng-show="i <= basket.basket.back"
-                  ng-repeat="i in basket.maxRange()">{{i}}</span>
+                  ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             Database
             <span class="database box"
                   ng-class="'box-' + i"
                   ng-show="i <= basket.basket.database"
-                  ng-repeat="i in basket.maxRange()">{{i}}</span>
+                  ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             Test
             <span class="test box"
                   ng-class="'box-' + i"
                   ng-show="i <= basket.basket.test"
-                  ng-repeat="i in basket.maxRange()">{{i}}</span>
+                  ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             Hipster
             <span class="hipster box"
                   ng-class="'box-' + i"
                   ng-show="i <= basket.basket.hipster"
-                  ng-repeat="i in basket.maxRange()">{{i}}</span>
+                  ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             <hr/>
@@ -103,5 +103,6 @@ ng-app: devoxx
 </div>
 
 <script src="/webjars/angularjs/1.2.14/angular.min.js"></script>
+<script src="/webjars/angularjs/1.2.14/angular-animate.min.js"></script>
 <script src="controller.coffee"></script>
 

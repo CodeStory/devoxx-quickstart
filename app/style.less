@@ -51,12 +51,6 @@ body {
       width: 16px;
       height: 16px;
       top: 3px;
-
-      color: #000000;
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 16px;
-      text-align: center;
     }
 
     .box-1 {
@@ -99,4 +93,15 @@ body {
   .hipster {
     background-color: yellowgreen;
   }
+}
+
+.box.ng-hide-add, .box.ng-hide-remove {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  display: block !important;
+}
+
+.box.ng-hide {
+  opacity: 0;
 }
