@@ -30,7 +30,7 @@ body {
 #basket {
   padding: 10px;
   margin-right: 20px;
-  width: 270px;
+  width: 250px;
 
   hr {
     margin: 6px 0;
@@ -39,34 +39,64 @@ body {
   li {
     color: #EDEDED;
     list-style: none;
-    font-size: 18px;
-    line-height: 22px;
-    vertical-align: top;
     height: 22px;
+    line-height: 22px;
+    font-size: 18px;
+    vertical-align: middle;
+    font-weight: bold;
+    position: relative;
 
-    strong {
-      display: inline-block;
-      width: 100px;
+    .box {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 3px;
+
+      color: #000000;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+    }
+
+    .box-1 {
+      left: 90px;
+    }
+
+    .box-2 {
+      left: 110px;
+    }
+
+    .box-3 {
+      left: 130px;
+    }
+
+    .box-4 {
+      left: 150px;
+    }
+
+    .box-5 {
+      left: 170px;
     }
   }
 
   .front {
-    color: gold;
+    background-color: gold;
   }
 
   .back {
-    color: plum;
+    background-color: plum;
   }
 
   .database {
-    color: lightsalmon;
+    background-color: lightsalmon;
   }
 
   .test {
-    color: cornflowerblue;
+    background-color: cornflowerblue;
   }
 
   .hipster {
-    color: yellowgreen;
+    background-color: yellowgreen;
   }
 }
