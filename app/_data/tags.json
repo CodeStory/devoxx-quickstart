@@ -1,0 +1,7 @@
+{
+  "front": ["CoffeeScript", "Javascript", "Jsp", "Web"],
+  "back": ["Java", "Jee", "Node", "Spring"],
+  "database": ["Hibernate"],
+  "test": ["Test"],
+  "hipster": ["CoffeeScript", "Javascript", "Node"]
+}

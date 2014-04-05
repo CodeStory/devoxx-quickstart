@@ -4,6 +4,7 @@ import static java.util.stream.Stream.*;
 import static net.codestory.http.convert.TypeConvert.*;
 
 import java.util.*;
+import java.util.stream.*;
 
 import net.codestory.http.*;
 import net.codestory.http.templating.*;
@@ -14,54 +15,36 @@ public class Server {
         .get("/basket?emails=:emails", (context, emails) -> {
           Basket basket = new Basket();
 
-          for (String email : emails.split("[,]")) {
-            Optional<Developer> developer = findDeveloper(email);
-            if (developer.isPresent()) {
-              String[] tags = developer.get().tags;
-
-              basket.front += front(tags);
-              basket.back += back(tags);
-              basket.database += database(tags);
-              basket.test += test(tags);
-              basket.hipster += hipster(tags);
-              basket.sum += developer.get().price;
-            }
-          }
+          Stream.of(emails.split(",")).map(Server::findDeveloper).filter(dev -> dev != null).forEach(developer -> {
+            String[] tags = developer.tags;
+            basket.front += count("front", tags);
+            basket.back += count("back", tags);
+            basket.database += count("database", tags);
+            basket.test += count("test", tags);
+            basket.hipster += count("hipster", tags);
+            basket.sum += developer.price;
+          });
 
           return basket;
         })
     ).start();
   }
 
-  static Optional<Developer> findDeveloper(String email) {
+  static Developer findDeveloper(String email) {
     Developer[] developers = convertValue(Site.get().getData().get("developers"), Developer[].class);
-    return of(developers).filter(developer -> developer.email.equals(email)).findFirst();
+
+    return of(developers).filter(developer -> developer.email.equals(email)).findFirst().orElse(null);
   }
 
-  static long front(String[] tags) {
-    return of(tags).filter(tag -> tag.equals("Javascript") || tag.equals("Jsp") || tag.equals("CoffeeScript")).count();
-  }
-
-  static long back(String[] tags) {
-    return of(tags).filter(tag -> tag.equals("Java") || tag.equals("Spring") || tag.equals("Hibernate") || tag.equals("Node")).count();
-  }
-
-  static long database(String[] tags) {
-    return of(tags).filter(tag -> tag.equals("Hibernate")).count();
-  }
-
-  static long test(String[] tags) {
-    return of(tags).filter(tag -> tag.equals("Java") || tag.equals("Javascript")).count();
-  }
-
-  static long hipster(String[] tags) {
-    return of(tags).filter(tag -> tag.equals("Javascript") || tag.equals("Web")).count();
+  private static long count(String domain, String[] tags) {
+    Map<String, List<String>> tagsPerDomain = (Map<String, List<String>>) Site.get().getData().get("tags");
+    return of(tags).filter((t) -> tagsPerDomain.get(domain).contains(t)).count();
   }
 
   static class Developer {
     String email;
     String[] tags;
-    int price;
+    long price;
   }
 
   static class Basket {
