@@ -48,11 +48,11 @@ public class Server {
   }
 
   static class Basket {
-    long sum;
     long front;
     long back;
     long database;
     long test;
     long hipster;
+    long sum;
   }
 }

@@ -15,26 +15,30 @@ ng-app: devoxx
       <div id="basket" ng-if="basket.basket.sum > 0">
         <ul>
           <li>
-            <strong>Test</strong>
-            <span class="test glyphicon glyphicon-stop" ng-show="i <= basket.basket.test"
+            <strong>Front</strong>
+            <span class="front glyphicon glyphicon-stop" ng-show="i <= basket.basket.front"
                   ng-repeat="i in basket.maxRange()"></span>
           </li>
           <li>
             <strong>Back</strong>
             <span class="back glyphicon glyphicon-stop" ng-show="i <= basket.basket.back"
                   ng-repeat="i in basket.maxRange()"></span>
+          </li>
           <li>
             <strong>Database</strong>
             <span class="database glyphicon glyphicon-stop" ng-show="i <= basket.basket.database"
                   ng-repeat="i in basket.maxRange()"></span>
+          </li>
           <li>
-            <strong>Front</strong>
-            <span class="front glyphicon glyphicon-stop" ng-show="i <= basket.basket.front"
+            <strong>Test</strong>
+            <span class="test glyphicon glyphicon-stop" ng-show="i <= basket.basket.test"
                   ng-repeat="i in basket.maxRange()"></span>
+          </li>
           <li>
             <strong>Hipster</strong>
             <span class="hipster glyphicon glyphicon-stop" ng-show="i <= basket.basket.hipster"
                   ng-repeat="i in basket.maxRange()"></span>
+          </li>
           <li>
             <hr/>
           </li>
