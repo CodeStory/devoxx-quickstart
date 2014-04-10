@@ -24,12 +24,12 @@ Pour faire cet atelier, tu as besoin  :
   * d'un portable avec de la batterie pour durer 3h de coding
   * d'un binome
   * de Logiciel :
-    ** Java 8
-    ** maven 3
-    ** node.js 0.10+
-    ** un repo maven "chauffé"
-    ** d'un IDE
-    ** de quelques "assets" de données et graphiques
+    * Java 8
+    * maven 3
+    * node.js 0.10+
+    * un repo maven "chauffé"
+    * d'un IDE
+    * de quelques "assets" de données et graphiques
 
 Tu trouveras tout ça dans une clé USB que nous te ditribuons pendant le début de la session.
 
@@ -52,73 +52,83 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
 
 # Let's write some code
 
-1.1) Creer toi un repertoire tout neuf, dans lequel tu poserais un pom qui pourrait ressembler à ça dedans :
-```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+1. Creer toi un repertoire tout neuf, dans lequel tu poserais un pom qui pourrait ressembler à ça dedans :
 
-  <groupId>net.devoxx</groupId>
-  <artifactId>chasseurdedevio</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  ```xml
+  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <groupId>net.devoxx</groupId>
+    <artifactId>chasseurdedevio</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <dependencies>
-    <dependency>
-      <groupId>net.code-story</groupId>
-      <artifactId>http</artifactId>
-      <version>1.38</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <properties>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-</project>
-```
-1.2) Ensuite tu te cree comme un grand les repertoires de sources et de tests qui vont bien.
+    <dependencies>
+      <dependency>
+        <groupId>net.code-story</groupId>
+        <artifactId>http</artifactId>
+        <version>1.38</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+
+  </project>
+  ```
+
+1. Ensuite tu te cree comme un grand les repertoires de sources et de tests qui vont bien.
 (tu peux aussi utiliser ta souris, mais ca fait moins hype)
-```bash
-mkdir -p src/main/java
-mkdir -p src/test/java
-```
-1.3) On est là pour faire du web. Alors allons y pour un helloworld classique mais c'est bien le classique aussi parfois.
-Tu peux creer un fichier `index.md` à la racine d'une répertoire `app` a coté de ton `pom.xml`
-```bash
-mkdir app
-touch index.md
-```
-Ensuite tu édites `index.md`(md c'est pour markdown mais tu le sais déjà, sauf qu'on commence avec un peu de YAML au début, ca s'appelle du YAML Front Matter) et tu colles dedans ça par exemple:
-```
-title:hello devoxx
----
-# Hello Devoxx
 
-Je sers une page web avec un projet java en moins de 2 minutes... si si c'est possible
-```
-1.4) Bon on code du java ou pas ? Ben c'est maintenant :
-Dans src/main/java qqpart tu creés une classe `Server` par exemple comme celle là:
-```java
-package com.acme;
+  ```bash
+  mkdir -p src/main/java
+  mkdir -p src/test/java
+  ```
+1. On est là pour faire du web. Alors allons y pour un helloworld classique mais c'est bien le classique aussi parfois.
+  Tu peux creer un fichier `index.md` à la racine d'une répertoire `app` a coté de ton `pom.xml`
 
-import net.codestory.http.*;
+  ```bash
+  mkdir app
+  touch index.md
+  ```
 
-public class Server {
+  Ensuite tu édites `index.md`(md c'est pour markdown mais tu le sais déjà, sauf qu'on commence avec un peu de YAML au début, ca s'appelle du YAML Front Matter) et tu colles dedans ça par exemple:
 
-  public static void main(String[] args) {
-    new WebServer().start();
+  ```Markdown
+  title:hello devoxx
+  ---
+  # Hello Devoxx
+
+  Je sers une page web avec un projet java en moins de 2 minutes... si si c'est possible
+  ```
+
+1. Bon on code du java ou pas ? Ben c'est maintenant :
+
+  Dans src/main/java qqpart tu creés une classe `Server` par exemple comme celle là:
+
+  ```java
+  package com.acme;
+
+  import net.codestory.http.*;
+
+  public class Server {
+
+    public static void main(String[] args) {
+      new WebServer().start();
+    }
   }
-}
-```
-1.5) Execute la classe Server et pointe ton navigateur sur http://localhost:8080
+  ```
+
+1. Execute la classe Server et pointe ton navigateur sur http://localhost:8080
 Normalement, là, tu as moins envie d'utiliser weblo et tomcat, lundi au boulot.
 
 # Server Side Stuff don't suck
