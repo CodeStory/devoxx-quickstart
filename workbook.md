@@ -52,6 +52,8 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
 
 # Let's write some code
 
+## Démarrer le serveur
+
 1. Creer toi un repertoire tout neuf, dans lequel tu poserais un pom qui pourrait ressembler à ça dedans :
 
   ```xml
@@ -93,7 +95,7 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
   mkdir -p src/main/java
   mkdir -p src/test/java
   ```
-1. On est là pour faire du web. Alors allons y pour un helloworld classique mais c'est bien le classique aussi parfois.
+1. On est là pour faire du web. Alors allons y pour un helloworld classique ( c'est bien le classique aussi parfois).
   Tu peux creer un fichier `index.md` à la racine d'une répertoire `app` a coté de ton `pom.xml`
 
   ```bash
@@ -101,7 +103,7 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
   touch index.md
   ```
 
-  Ensuite tu édites `index.md`(md c'est pour markdown mais tu le sais déjà, sauf qu'on commence avec un peu de YAML au début, ca s'appelle du YAML Front Matter) et tu colles dedans ça par exemple:
+  Ensuite tu édites `index.md`(md c'est pour markdown mais tu le sais déjà, sauf qu'on commence avec un peu de YAML au début, ça s'appelle du YAML Front Matter) et tu colles dedans ça par exemple:
 
   ```Markdown
   title:hello devoxx
@@ -110,8 +112,11 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
 
   Je sers une page web avec un projet java en moins de 2 minutes... si si c'est possible
   ```
+  Dans fluent-http, tous ce qui est dans le repertoire app est servi par défaut à la racine de ton serveur.
+  Si tu y mets du html il sera servi tel quel, comme pour le js, les images etc..
+  Si tu mets du less, il sera compilé en css, du coffee en js, du markdown en html, etc...
 
-1. Bon on code du java ou pas ? Ben c'est maintenant :
+1. Bon on code du java ou pas ? :
 
   Dans src/main/java qqpart tu creés une classe `Server` par exemple comme celle là:
 
@@ -127,9 +132,57 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
     }
   }
   ```
-
 1. Execute la classe Server et pointe ton navigateur sur http://localhost:8080
 Normalement, là, tu as moins envie d'utiliser weblo et tomcat, lundi au boulot.
+
+
+## Des moustaches coté serveur avec Handlebars
+Le repertoire `_data` à la racine de ton projet (a coté de ton `pom.xml` donc), peut contenir des fichiers json ou yaml
+qui sont directement accessible serverside.
+
+1. Creer un fichier `hello.json` dans `_data`
+qui pourrait contenir les choses suivantes :
+```json
+{"greetings":"Hello World"}
+```
+Tu peux ajouter dans une page html le code suivant:
+```html
+<h1>Exemple de fichier de données</h1>
+[[greetings]]
+```
+sans redémarer ton serveur, le fichier sera servi et le processing sera fait coté serveur.
+
+Le langage de template ici est du handlebars (http://handlebarsjs.com/) tu peux donc utiliser toutes les commandes handlebars comme par exemple:
+
+### Boucle
+Avec une liste de personne comme cela :
+```json
+{
+  "people": [
+    {"firstName": "Yehuda", "lastName": "Katz", "author":true},
+    {"firstName": "Carl", "lastName": "Lerche","author":false},
+    {"firstName": "Alan", "lastName": "Johnson","author":true}
+  ]
+}
+```
+tu peux les afficher avec une boucle comme ceci:
+```
+[[#each people]]
+  [[firstName]] [[lastName]]
+[[/each]]
+```
+
+### condition
+
+```html
+<div class="entry">
+  [[#if author]]
+  <h1>[[firstName]] [[lastName]]</h1>
+  [[/if]]
+</div>
+```
+
+Il ya d'autres éléments (mais guère plus, que tu peux voir dans http://handlebarsjs.com/)
 
 # Server Side Stuff don't suck
 
