@@ -186,6 +186,58 @@ Il ya d'autres éléments (mais guère plus, que tu peux voir dans http://handle
 
 # Server Side Stuff don't suck
 
+fluent-http expose en json vos beans par défaut.
+Par exemple pour retourner une persone qui pourrait être défini comme suis :
+```Java
+public class Person {
+  public String name;
+  public int age
+
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+Vous pouvez facilement ajouter une resource à votre serveur http comme suis :
+```Java
+public class PersonResource {
+
+  @Get("/douglas")
+  public Person getPerson() {
+    return new Person("Scott Adams",42);
+  }
+}
+```
+Vous le brancher dans vos routes :
+```Java
+package com.acme;
+
+import net.codestory.http.*;
+
+public class Server {
+
+  public static void main(String[] args) {
+    new WebServer(routes -> routes.add(PersonResource.class).start();
+  }
+}
+```
+Et en appellant http://localhost:8080/douglas vous obtenez :
+```json
+{
+  "name":"Scott Adams",
+  "age":42
+}
+```
 # How I'm sure it works ?
+
+## Tester unitairement ses resources avec JUnit
+
+## Tester en intégration ses resources avec RestAssured
+
+## Tester unitairement ses controlleurs Angular avec Karma
+
+## Tester toute son application avec Protractor
 
 # You want more ?
