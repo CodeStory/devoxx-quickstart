@@ -184,6 +184,31 @@ tu peux les afficher avec une boucle comme ceci:
 
 Il ya d'autres éléments (mais guère plus, que tu peux voir dans http://handlebarsjs.com/)
 
+### Ajouter bootstrap
+
+Pour ajouter bootstrap tu peux utiliser les webjars
+
+tu ajoutes à ton pom
+
+```xml
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>3.1.1</version>
+    </dependency>
+```
+Tu peux acceder en utilisant le chemin `/webjars/bootstrap/3.1.1/css/bootstrap.css` dans une balise styles.
+Si tu utilise le YAML Front Matter tu peux carrement le rajouter dans celui ci :
+```YAML
+---
+title: Chasseur de dev.io
+styles: /webjars/bootstrap/3.1.1/css/bootstrap.css
+---
+```
+Tu peux agir de la même manière avec toutes tes dépendances front.
+
+Sinon y'a bower c'est plus hype mais tu dois déplacer les fichiers à la main.
+
 # Server Side Stuff don't suck
 
 fluent-http expose en json vos beans par défaut.
