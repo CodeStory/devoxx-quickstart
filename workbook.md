@@ -23,17 +23,17 @@ Lundi, au boulot, vous ne verrez plus votre projet java de la même manière.
 Pour faire cet atelier, tu as besoin  :
   * d'un portable avec de la batterie pour durer 3h de coding
   * d'un binome
-  * de Logiciel :
+  * de logiciels :
     * Java 8
-    * maven 3
+    * maven 3.1
     * node.js 0.10+
     * un repo maven "chauffé"
     * d'un IDE
     * de quelques "assets" de données et graphiques
 
-Tu trouveras tout ça dans une clé USB que nous te ditribuons pendant le début de la session.
+Tu trouveras tout ça dans une clé USB que nous te distribuons au début de la session.
 
-# chasseurded€v.io
+# Recruteur.io
 
 Votre ami Jean-Claude de SupDeCo Aurillac a une idée de business de malade, Mark Zuckerberg en tremble encore : il s'agit de faire un site pour trouver des grouillots modernes (programmeurs) pour se faire une tonne de $$$ en les plaçant dans des structures qui font des projets web.
 
@@ -75,7 +75,7 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
       <dependency>
         <groupId>net.code-story</groupId>
         <artifactId>http</artifactId>
-        <version>1.38</version>
+        <version>1.42</version>
       </dependency>
       <dependency>
         <groupId>junit</groupId>
@@ -92,8 +92,7 @@ On t'a installé Frontpage et IIS, let's go ! T'as 2h.
 (tu peux aussi utiliser ta souris, mais ca fait moins hype)
 
   ```bash
-  mkdir -p src/main/java
-  mkdir -p src/test/java
+  mkdir -p src/{main,test}/java
   ```
 1. On est là pour faire du web. Alors allons y pour un helloworld classique ( c'est bien le classique aussi parfois).
   Tu peux creer un fichier `index.md` à la racine d'une répertoire `app` a coté de ton `pom.xml`
